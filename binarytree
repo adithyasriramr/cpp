@@ -1,0 +1,87 @@
+#include <iostream>
+using namespace std;
+class node
+{
+public:
+    int data;
+    node *left;
+    node *right;
+    node(int d)
+    {
+        data = d;
+        left = NULL;
+        right = NULL;
+    }
+};
+node *buildTree()
+{
+    int d;
+    cin >> d;
+    if (d == -1)
+    {
+        return NULL;
+    }
+    node *root = new node(d);
+    cout<<"Enter the left child of "<<d<<"(-1 for no node):"<<endl;
+    root->left = buildTree();
+    cout<<"Enter the right child of "<<d<<"(-1 for no node):"<<endl;
+    root->right = buildTree();
+    return root;
+}
+int height(node *root)
+{
+    if (root == NULL)
+        return 0;
+    int l = height(root->left);
+    int r = height(root->right);
+    int h=1 + max(l, r);
+    return h;
+}
+void preOrderTraversal(node*root){
+    if(root == NULL) 
+    return;
+    cout << root->data<<" ";
+    preOrderTraversal(root->left);
+    preOrderTraversal(root->right);
+}
+void inorderTraversal(node*root){
+    if(root == NULL) return;
+    inorderTraversal(root->left);
+    cout << root->data<<" ";
+    inorderTraversal(root->right);
+}
+void postOrderTraversal(node*root){
+    if(root == NULL) return;
+    postOrderTraversal(root->left);
+    postOrderTraversal(root->right);
+    cout << root->data<<" ";
+}
+bool search(node*root, int key)
+{
+    if (root == NULL)
+        return false;
+    if (root->data == key)
+        return true;
+    bool res1 = search(root->left, key);
+    if(res1) return true;
+    bool res2 = search(root->right, key);
+    return res2;
+}
+int main()
+{   int key;
+    cout<<"Enter the value of the node(-1 for no node):"<<endl;
+    node *root = buildTree();
+    preOrderTraversal(root);
+    cout<<endl;
+    inorderTraversal(root);
+    cout <<endl;
+    postOrderTraversal(root);
+    cout<<endl;
+    cout<<"Enter the element to be searched:";
+    cin>>key;
+    if (search(root, key))
+        cout << "Element found"<<endl;
+    else
+        cout << "Element not found"<<endl;
+    return 0;
+}
