@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+class student
+{
+    public:
+    int marks;
+    void print() 
+    { 
+        cout << "Score in Math is "<< marks; 
+    }
+};
+int main()
+{
+    student d, *dp;
+    dp = &d;     // pointer to object
+    int student::*ptr=&student::marks;   // pointer to data member 'a'
+    d.*ptr=98;
+    d.print();
+}
