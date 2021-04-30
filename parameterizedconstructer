@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+class hello{
+    int a, b;
+public:
+    hello(int x, int y) {
+        a = x;
+        b = y;
+    }
+    void Display() {
+        cout << "Values:\n" << a << "\n" << b;
+    }
+};
+int main() {
+    hello obj(10, 20);//invoking constructor
+    obj.Display();
+    return 0;
+}
