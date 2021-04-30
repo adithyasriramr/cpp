@@ -1,0 +1,35 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+
+    float a, b, c, r1, r2, D, R, I;
+    cout << "Enter coefficients a, b and c: ";
+    cin >> a >> b >> c;
+    D = b*b - 4*a*c;
+    
+    if (D > 0) {
+        r1 = (-b + sqrt(D)) / (2*a);
+        r2 = (-b - sqrt(D)) / (2*a);
+        cout << "\n Roots: ";
+        cout << "\n root1 = " << r1 ;
+        cout << "\n root2 = " << r2 ;
+    }
+    
+    else if (D == 0) {
+        cout << "\nRoots :";
+        r1 = -b/(2*a);
+        cout << "\n root1 = root2 =" << r1 ;
+    }
+
+    else {
+        R = -b/(2*a);
+        I =sqrt(-D)/(2*a);
+        cout << "\n Roots :" ;
+        cout << "\n Root1 = " << R<< "+" << I << "i" ;
+        cout << "\n Root2 = " << R<< "-" << I << "i" ;
+    }
+
+    return 0;
+}
