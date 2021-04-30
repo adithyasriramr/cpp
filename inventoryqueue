@@ -1,0 +1,86 @@
+#include <iostream>
+using namespace std;
+int queue[100], n = 100, front = - 1, rear = - 1;
+void Insert() {
+   int val;
+   if (rear == n - 1)
+      cout<<"Inventory is full"<<endl;
+   else {
+      if (front == - 1)
+      front = 0;
+      cout<<"Enter the item no. to be added to the inventory : "<<endl;
+      cin>>val;
+      rear++;
+      queue[rear] = val;
+   }
+}
+void Delete() {
+   if (front == - 1 || front > rear) {
+      cout<<"Inventory is empty "<<endl;
+   return ;
+   } else {
+      cout<<"The item has been removed from the inventory "<<endl;
+      front++;;
+   }
+}
+void Display() {
+   if (front == - 1)
+   cout<<"Inventory is empty"<<endl;
+   else {
+      cout<<"The items in the inventory are : "<<endl;
+      for (int i = front; i <= rear; i++){
+          int c=queue[i];
+          switch(c){
+              case 1:{
+                  cout<<"Oil"<<endl;
+                  break;
+              }
+              case 2:{
+                  cout<<"Plastic"<<endl;
+                  break;
+              }
+              case 3:{
+                  cout<<"Natural Gas"<<endl;
+                  break;
+              }
+              case 4:{
+                  cout<<"Timber"<<endl;
+                  break;
+              }
+              case 5:{
+                  cout<<"Coal"<<endl;
+                  break;
+              }
+          }
+      }
+   }
+}
+int main() {
+   int ch;
+   cout<<"1) Add item into the inventory"<<endl;
+   cout<<"2) Remove item from inventory"<<endl;
+   cout<<"3) Display all the items of inventory"<<endl;
+   cout<<"4) Exit"<<endl;
+do {
+   cout<<"Enter your choice : "<<endl;
+   cin>>ch;
+   switch (ch) {
+      case 1: 
+            cout<<"1. Oil"<<endl; 
+            cout<<"2. Plastic"<<endl;
+            cout<<"3. Natural Gas"<<endl;
+            cout<<"4. Timber"<<endl;
+            cout<<"5. Coal"<<endl;
+            Insert();
+         break;
+      case 2: Delete();
+         break;
+      case 3: Display();
+         break;
+      case 4: cout<<"Exit"<<endl;
+         break;
+      default: cout<<"Invalid choice"<<endl;
+   }
+} while(ch!=4);
+   return 0;
+}
