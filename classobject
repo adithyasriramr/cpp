@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+class student {
+  private:
+    int rno, marks[5];
+  char name[25];
+  public:
+    void input() {
+      cout << "Enter name:";
+      cin >> name;
+      cout << "Enter rollno.:";
+      cin >> rno;
+      cout << "Enter marks in 5 subjects:";
+      for (int i = 0; i < 5; i++) {
+        cin >> marks[i];
+      }
+    }
+  float calculate() {
+    int sum = 0;
+    float avg = 0;
+    for (int i = 0; i < 5; i++) {
+      sum+=marks[i];
+    }
+    avg=sum/5;
+    return avg;
+  }
+  void output() {
+    float x=calculate();
+    cout << "\n";
+    cout << "\nName:";
+    cout << name;
+    cout << "\nRno:";
+    cout << rno;
+    cout << "\nAverage is:";
+    cout << x;
+  }
+};
+int main() {
+  student s;
+  s.input();
+  s.output();
+  return 0;
+}
