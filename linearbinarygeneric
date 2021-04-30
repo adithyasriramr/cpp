@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+template <class T>
+void bnsearch(T *arr, int beg, int end, T ele)
+{
+     int pos=-1;
+     while (beg <= end) { 
+        int mid = beg + end / 2; 
+        if (arr[mid] == ele) {
+            pos=mid;
+            cout << "\nElement is present at index: "<<pos; 
+            return;
+        }
+       if (arr[mid] < ele) 
+            beg = mid + 1; 
+        else
+            end = mid - 1; 
+    } 
+    if(pos==-1){
+        cout << "\nElement is not present in array";
+    }
+}
+template <class T1>
+void lnsearch(T1 *a, T1 item, int n)
+{
+    int flag = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] == item)
+        {
+            cout << "\nItem found at index:" << i;
+            flag = 1;
+            return;
+        }
+    }
+    cout << "\nNot Found";
+}
+int main() 
+{ 
+    int arr[5] = { 2, 3, 4, 10, 40 }; 
+    int ele = 40; 
+    bnsearch(arr, 0, 4 , ele); 
+    float arr1[5] = { 2.5, 3.5, 4.2, 10.9, 40.65 }; 
+    float ele1 = 10.9; 
+    bnsearch(arr1, 0, 4 , ele1);
+    double array1[5]= {2.4, 5.53,44.4, 54.45, 65.7};
+    double item1=5.53;
+    lnsearch(array1,item1,5);
+    return 0; 
+}
