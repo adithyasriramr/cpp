@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+void mul(int a = 1, int b = 2, int c = 3, int d = 4) {
+  cout << "\n";
+  cout << a << "*" << b << "*" << c << "*" << d << "=" << a * b * c + d;
+}
+int main() {
+  int x = 5, y = 6, z = 7, w = 8;
+  mul(x, y, z, w);
+  mul(x, y, z);
+  mul(x, y);
+  mul(x);
+  mul();
+  return 0;
+}
