@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+class dist {
+  private:
+    int d1, d2, d3;
+  public:
+    void input() {
+      cout << "Enter distance1(metres): ";
+      cin >> d1;
+      cout << "Enter distance2(metres): ";
+      cin >> d2;
+    }
+  void add() {
+    d3 = d1 + d2;
+    cout << "The sum of distances=";
+    cout << d3/1000 << "." << d3%1000 << "km";
+  }
+};
+int main() {
+  dist d;
+  d.input();
+  d.add();
+  return 0;
+}
