@@ -1,0 +1,120 @@
+#include<iostream>
+using namespace std;
+class person
+{
+        int id;
+        char name[30];
+public:
+        virtual void getdata();
+        virtual void display();
+        virtual void bonus();
+};
+void person :: getdata()
+{
+        cout <<"\nEnter the name and number of the employee: "<< endl;
+        cin >> name>>id;
+}
+void person :: display()
+{
+        cout <<"\nEmployee Name  = "<< name<<"\nNumber =  "<<id;
+}
+void person :: bonus()
+{
+        cout <<"\nBonus function of person base class is called ";
+}
+class admin : public virtual person
+{
+        int sale_admin;
+public:
+        void getdata();
+        void display();
+        void bonus();
+};
+void admin :: getdata()
+{
+        cout <<"\nEnter the Sale amount of the admin : "<< endl;
+        cin >> sale_admin;
+}
+void admin :: display()
+{
+        cout <<"\nAdmin Employee sale amount  = "<< sale_admin;
+}
+void admin :: bonus()
+{
+        if (sale_admin >2000)
+        cout << "\nThe bonus of the admin is : "<< (sale_admin*0.25);
+}
+class account : public virtual person
+{
+        long int amt;
+public :
+        void getdata();
+        void display();
+        void bonus();
+};
+void account :: getdata()
+{
+        cout <<"\nEnter the amount accumulated in the account : "<< endl;
+        cin >> amt;
+}
+void account:: display()
+{
+        cout <<"\nEmployee Account amount  = "<< amt;
+}
+void account :: bonus()
+{
+        if (amt >10000)
+        cout << "\nThe bonus of the admin is : "<< (amt*0.25);
+}
+class master : public admin, public account
+{
+public:
+        void getdata();
+        void display();
+        void bonus();
+};
+void master :: getdata()
+{
+        cout <<"\nTaking in details of the master class:";
+        person::getdata();
+        admin:: getdata();
+        account::getdata();
+}
+void master :: display()
+{
+        cout <<"\nDisplaying details of the master class:";
+        person::display();
+        admin:: display();
+        account::display();
+}
+void master :: bonus()
+{
+        cout <<"\nDisplaying the bonus of the master class:";
+        person::bonus();
+        admin:: bonus();
+        account::bonus();
+}
+int main()
+{
+    person p, *per_ptr;
+    admin a, *admin_ptr;
+    account ac, *acc_ptr;
+    master  ms, *ms_ptr;
+    per_ptr=&p;//assigning adress of person to base class pointer
+    per_ptr->getdata();
+    per_ptr->display();
+    per_ptr->bonus();
+    per_ptr=&a;//assigning address of admin to base class pointer
+    per_ptr->getdata();
+    per_ptr->display();
+    per_ptr->bonus();
+    per_ptr=&ac;//assigning address of account to base class pointer
+    per_ptr->getdata();
+    per_ptr->display();
+    per_ptr->bonus();
+    per_ptr=&ms;//assigning address of master to base class pointer
+    per_ptr->getdata();
+    per_ptr->display();
+    per_ptr->bonus();
+    return 0;
+}
