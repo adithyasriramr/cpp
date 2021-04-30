@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+class flight {
+private:
+  int fno,fare;
+  string source,destination;
+public:
+  void setValues(int fno,int fare,string source,string destination){//this pointer is used when local variables have same name as data members
+    this->source =source;
+    this->fno=fno;
+    this->fare=fare;
+    this->destination=destination;
+  }
+  void displayValues(){
+    cout<<"The flight no. is "<<fno<<endl;
+    cout<<"The source is "<<source<<endl;
+    cout<<"The destination is "<<destination<<endl;
+    cout<<"The fare is "<<fare<<endl;
+  }
+};
+int main(){
+  flight boeing;
+  boeing.setValues(86745,2500,"Bali","Delhi");
+  boeing.displayValues();
+  return 0;
+}
