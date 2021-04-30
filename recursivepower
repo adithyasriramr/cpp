@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int calc(int n, int powr)
+{
+    if (powr!= 0)
+        return (n*calc(n,powr-1));
+    else
+        return 1;
+}
+int main()
+{
+    int n, powr, result;
+    cout << "Enter number: ";
+    cin >> n;
+    cout << "Enter power: ";
+    cin >> powr;
+    result = calc(n, powr);
+    cout <<"Result: "<< result;
+    return 0;
+}
