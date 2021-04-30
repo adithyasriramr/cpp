@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+class complex {
+    int a, b;
+public:
+    void getvalue() {
+        cout << "Enter the Two Numbers:\n";
+        cin >> a>>b;
+    }
+    void operator++() {
+        a = ++a;
+        b = ++b;
+    }
+    void operator--() {
+        a = --a;
+        b = --b;
+    }
+    void display() {
+        cout << a << "+\t" << b << "i";
+    }
+};
+int main() {
+    complex num;
+    num.getvalue();
+    ++num;
+    cout << "Increment Complex Number\n";
+    num.display();
+    --num;
+    cout << "\nDecrement Complex Number\n";
+    num.display();
+}
