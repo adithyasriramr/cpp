@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int a=5,b=10;
+    try{
+        if(a>b)
+            throw a;
+        else{
+            throw "Greater than exception";
+        }
+    }
+    catch(int err){
+        cout<<err;
+    }
+    catch(...){
+        cout<<"\nSome exception";
+    }
+    return 0;
+}
