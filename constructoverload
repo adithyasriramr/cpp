@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+class Person {
+   private:
+    int age;
+   public:
+    Person() {// 1. Constructor with no arguments
+        age = 20;
+    }
+    Person(int a) {// 2. Constructor with an argument
+        age = a;
+    }
+    int getAge() {
+        return age;
+    }
+};
+int main() {
+    Person person1, person2(45);
+    cout << "Person1 Age = " << person1.getAge() << endl;
+    cout << "Person2 Age = " << person2.getAge() << endl;
+    return 0;
+}
