@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+int stack[5];
+int n=5, top=-1;
+void push(int val) {
+   if(top>=n-1)
+      cout<<"Inventory is full"<<endl; 
+   else {
+      top++;
+      stack[top]=val;
+      cout<<"Item added to inventory"<<endl;
+   }
+}
+void pop() {
+   if(top<=-1)
+      cout<<"Inventory is empty"<<endl;
+   else {
+      cout<<"Item removed from inventory"<<endl;
+      top--;
+   }
+}
+void display() {
+   if(top>=0) {
+      cout<<"The items in the inventory are:"<<endl;
+      for(int i=top; i>=0; i--)
+      {
+          int c;
+          c=stack[i];
+          switch(c){
+              case 1:{
+                  cout<<"Oil"<<endl;
+                  break;
+              }
+              case 2:{
+                  cout<<"Plastic"<<endl;
+                  break;
+              }
+              case 3:{
+                  cout<<"Natural Gas"<<endl;
+                  break;
+              }
+              case 4:{
+                  cout<<"Timber"<<endl;
+                  break;
+              }
+              case 5:{
+                  cout<<"Coal"<<endl;
+                  break;
+              }
+          }
+      }
+   } else
+      cout<<"Inventory is empty"<<endl;
+}
+int main() {
+   int ch, val; 
+   cout<<"1. Add to the inventory"<<endl;
+   cout<<"2. Remove from inventory"<<endl;
+   cout<<"3. Display the item no.'s in the inventory"<<endl;
+   cout<<"4. Exit"<<endl;
+   do {
+      cout<<"Enter choice: "<<endl;
+      cin>>ch;
+      switch(ch) {
+         case 1: {   
+            cout<<"1. Oil"<<endl; 
+            cout<<"2. Plastic"<<endl;
+            cout<<"3. Natural Gas"<<endl;
+            cout<<"4. Timber"<<endl;
+            cout<<"5. Coal"<<endl;
+            cout<<"Enter the item no. to be added to the inventory:"<<endl;
+            cin>>val;
+            push(val);
+            break;
+         }
+         case 2: {
+            pop();
+            break;
+         }
+         case 3: {
+            display();
+            break;
+         }
+         case 4: {
+            cout<<"Exit"<<endl;
+            break;
+         }
+         default: {
+            cout<<"Invalid Choice"<<endl;
+         }
+      }
+   }while(ch!=4); 
+      return 0;
+}
