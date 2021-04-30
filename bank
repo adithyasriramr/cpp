@@ -1,0 +1,165 @@
+#include<iostream>
+#include<string.h>
+#include<stdlib.h>
+using namespace std;
+class RBI
+{
+    public:
+            int check_int(float intr)
+            {
+                if(intr<0.04) return 0;
+                else return 1;
+            }
+            int check(int bal, int wit)
+            {
+                if((bal<1000)||(wit>5000) || (wit>bal) ) return 0; //Minimum bank balance should be 1000Rs and cant withdraw more than 5000Rs
+                else return 1;
+            }
+
+};
+class customer
+{
+        string na;
+        int     age;
+    public:
+            void set(string name,int ag)
+            {
+                na=name; age=ag;
+            }
+            void print()
+            {
+                cout<<"\nName and age: "<<na<<" " <<age;;
+            }
+};
+class account
+{
+        int acno;
+    public:
+            void set(int ano)
+            {
+                acno=ano;
+            }
+            void print()
+            {
+                cout<<"\nAccount number: "<<acno;
+            }
+};
+class SBI: public RBI, public customer, public account
+{
+        float   intr,bal,w,n;
+    public:
+            SBI()
+            {
+                cout<<"\nEnter interest rate for SBI:";
+                cin>>intr;
+                if(RBI::check_int(intr)==0)
+                {
+                    cout<<"\nInvalid"; exit(0);
+                }
+            }
+            void get()
+            {
+                cout<<"\nINPUT THE DETAILS:";
+                string name;
+                int ag,ano;
+                cout<<"\nEnter name, age,bank AC.No,balance and number of years: \n";
+                cin>>name>>ag>>ano>>bal>>n;;
+                customer::set(name,ag);
+                account::set(ano);
+            }
+            void withdrawal()
+            {
+                cout<<"\n\nEnter amount to be withdrawn: " ; cin>>w;
+                if(RBI::check(bal-w,w)==0)
+                {
+                    cout<<"\nInvalid transaction: ";
+                    exit(0);
+                }
+                else bal=bal-w;
+            }
+            void print()
+            {
+                customer::print();
+                account::print();
+                cout<<"\nBalance is: "<<bal;
+            }
+            void interest()
+            {
+                float si=bal*n*intr;
+                cout<<"\n\nSimple interest= "<<si;
+            }
+};
+class ICICI: public RBI, public customer, public account
+{
+        float   intr,bal,w,n;
+    public:
+            ICICI()
+            {
+                cout<<"\nEnter interest rate for ICICI:";
+                cin>>intr;
+                if(RBI::check_int(intr)==0)
+                {
+                    cout<<"\nInvalid"; exit(0);
+                }
+            }
+            void get()
+            {
+                cout<<"\nINPUT THE DETAILS:";
+                string name;
+                int ag,ano;
+                cout<<"\nEnter name, age,bank AC.No,balance and number of years: \n";
+                cin>>name>>ag>>ano>>bal>>n;;
+                customer::set(name,ag);
+                account::set(ano);
+            }
+            void withdrawal()
+            {
+                cout<<"\n\nEnter amount to be withdrawn: " ; cin>>w;
+                if(RBI::check(bal-w,w)==0)
+                {
+                    cout<<"\nInvalid transaction: ";
+                    exit(0);
+                }
+                else bal=bal-w;
+            }
+            void print()
+            {
+                customer::print();
+                account::print();
+                cout<<"\nBalance is: "<<bal;
+            }
+            void interest()
+            {
+                float si=bal*n*intr;
+                cout<<"\n\nSimple interest= "<<si;
+            }
+};
+int main()
+{
+
+    int opt;
+        cout<<"\nEnter 1 for SBI and 2 for ICICI bank:";
+        cin>>opt;
+        switch(opt)
+        {
+        case 1: {
+                    SBI s;
+                    s.get();
+                    s.print();
+                    s.withdrawal();
+                    s.print();
+                    s.interest();
+                    return 1;
+                }
+        case 2:
+                {
+                    ICICI s;
+                    s.get();
+                    s.print();
+                    s.withdrawal();
+                    s.print();
+                    s.interest();
+                    return 1;
+                }
+        }
+}
