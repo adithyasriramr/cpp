@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+class fruit
+{
+    int t=0;
+    public:
+    int set(int n)
+    {
+        t=n;
+        return t;
+    }
+};
+class apple:public fruit
+{
+    int num;
+    public:
+    int getapple(int i)
+    {
+        num=i;
+        return num;
+    }
+};
+class mango:public fruit
+{
+    int num;
+    public:
+    int getmango(int i)
+    {
+        num=i;
+        return num;
+    }
+};
+int main()
+{
+    apple a;
+    mango m;
+    fruit f;
+    int t=a.getapple(1)+m.getmango(4);
+    int n=f.set(t);
+    cout<<"Total number of fruits are "<<n;
+    return 0;
+}
