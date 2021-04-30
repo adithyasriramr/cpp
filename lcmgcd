@@ -1,0 +1,52 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+class lcmgcd
+{
+    public:
+    int a,b,l,g;
+    void input()
+    {
+        cout<<"\n Enter the 2 nos: "; 
+        cin>>a>>b;
+    }
+    void gcd()
+    {
+        int x,y; 
+        x=a;
+        y=b;
+        while(x != y)
+        {
+        if(x>y) 
+        x=x-y;
+        else    
+        y=y-x;
+        }
+        cout <<"\n HCF : "<<x;
+    }
+    void lcm()
+    {
+        int x,y,max; 
+        x=a;
+        y=b;
+        max=(x>y)?x:y;
+        do
+        {
+            if (max%x==0 && max%y==0)
+            {
+                cout <<"\n LCM = "<<max;
+                break;
+            }
+            else
+                ++max;
+        } while (1);
+    }
+};
+int main()
+{
+    lcmgcd l;
+    l.input();
+    l.gcd();
+    l.lcm();
+    return 0;
+}
