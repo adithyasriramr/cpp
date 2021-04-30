@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+class stud
+{
+    protected:
+    int id;
+    char name[20];
+    public:
+    void getstud()
+    {
+        cout<<"Enter student name and student id:\n";
+        cin>>name;
+        cin>>id;
+    }
+};
+class marks
+{
+    protected:
+    int m1,m2,m3;
+    public:
+    void getmarks()
+    {
+        cout<<"Enter the marks of the student in 3 subjects:\n";
+        cin>>m1;
+        cin>>m2;
+        cin>>m3;
+    }
+};
+class result:public stud,public marks
+{
+    int t;
+    float avg;
+    public:
+    void cal()
+    {
+        t=m1+m2+m3;
+        avg=t/3.0;
+    }
+    void display()
+    {
+        cout<<"Student Name:"<<name<<"\nStudent Id:"<<id;
+        cout<<"\nAverage marks:"<<avg;
+    }
+};
+int main() 
+{
+    result r;
+    r.getstud();
+    r.getmarks();
+    r.cal();
+    r.display();
+    return 0;
+}
