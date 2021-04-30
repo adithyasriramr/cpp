@@ -1,0 +1,101 @@
+#include<iostream>
+#include<stdlib.h>
+using  namespace std;
+class Stack
+{
+public:
+int s[100],top=-1,size;
+void  push(int x)
+{
+    if(top==size)
+    {
+        cout<<"Stack is full";
+        return;
+    }
+    else
+    {
+        top++;
+        s[top]=x;
+        cout<<"\n Element  pushed";
+    }
+}
+
+void pop()
+{
+    if(top==-1)
+    {
+        cout<<"\n empty";
+    }
+    else
+    {
+        cout<<s[top]<<"  is popped";
+        top--;
+    }
+}
+void display()
+{
+    int x=top;
+    if(x==-1)
+    {
+        cout<<"\n empty";
+    }
+    else
+    {
+        cout<<"\n Stack:";
+        for(int i=x;i>=0;i--)
+        {
+            cout<<s[i]<<" ";
+        }
+}}
+};
+int main()
+{
+    Stack q;
+    int choice, x,s;
+    cout<<"enter size of  stack";
+    cin>>s;
+    if(s>100)
+    {
+        cout<<"\n size exceeds max capacity,creating stack of max  size";
+        q.size=100;
+    }
+    else{
+    q.size=s;}
+    cout<<"\n Choose one option or -1  to  exit";
+    cout<<"\n 1.Push 2.Pop 3.Display 4.Exit";
+    cin>>choice;
+    while(choice!=-1)
+    {
+        switch(choice)
+        {
+            case  1:
+            {
+                cout<<"\n enter element to be pushed";
+                cin>>x;
+                q.push(x);
+                break;
+            }
+            case 2:
+            {
+                q.pop();
+                break;
+            }
+            case 3:
+            {
+                q.display();
+                break;
+            }
+            case 4:
+            {
+                exit(0);
+            }
+            default:
+            {
+                cout<<"INVALID  OPTION";
+            }
+        }
+        cout<<"\nChoose one option or -1  to  exit";
+        cout<<"\n1.Push 2.Pop 3.Display 4.Exit";
+        cin>>choice;
+    }
+}
